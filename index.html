@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Life Dashboard</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="theme-light">
+
+  <!-- ============================
+       HEADER: Clock, Greeting, Name Input, Theme Toggle
+       ============================ -->
+  <header class="site-header">
+    <div class="header-clock">
+      <p id="clock-time" aria-live="polite" aria-label="Current time">00:00:00</p>
+      <p id="clock-date" aria-live="polite" aria-label="Current date">Monday, January 01, 2025</p>
+    </div>
+
+    <div class="header-greeting">
+      <p id="greeting-text" aria-live="polite">Good Morning, User</p>
+    </div>
+
+    <form class="header-name-form" id="name-form" aria-label="Set your display name">
+      <label for="user-name-input" class="sr-only">Your name</label>
+      <input
+        type="text"
+        id="user-name-input"
+        name="userName"
+        placeholder="Enter your name"
+        maxlength="50"
+        autocomplete="off"
+        aria-describedby="name-error"
+      />
+      <button type="submit" id="name-save-btn">Save</button>
+      <p class="error-msg" id="name-error" role="alert" aria-live="assertive"></p>
+    </form>
+
+    <button type="button" id="theme-toggle" aria-label="Toggle light/dark theme">
+      🌙
+    </button>
+  </header>
+
+  <!-- ============================
+       MAIN DASHBOARD GRID
+       ============================ -->
+  <main class="dashboard-grid">
+
+    <!-- ========================
+         TIMER CARD — Pomodoro Focus Timer
+         ======================== -->
+    <section id="timer-card" class="card" aria-labelledby="timer-heading">
+      <h2 id="timer-heading">Focus Timer</h2>
+
+      <div class="timer-display-wrapper">
+        <p id="timer-display" aria-live="polite" aria-label="Timer display">25:00</p>
+      </div>
+
+      <div class="timer-controls">
+        <button type="button" id="timer-start" aria-label="Start timer">Start</button>
+        <button type="button" id="timer-stop"  aria-label="Stop timer">Stop</button>
+        <button type="button" id="timer-reset" aria-label="Reset timer">Reset</button>
+      </div>
+
+      <p class="error-msg" id="timer-error" role="alert" aria-live="assertive"></p>
+    </section>
+
+    <!-- ========================
+         TASK CARD — To-Do List Manager
+         ======================== -->
+    <section id="task-card" class="card" aria-labelledby="task-heading">
+      <h2 id="task-heading">Tasks</h2>
+
+      <form id="task-form" aria-label="Add a new task">
+        <label for="task-input" class="sr-only">New task</label>
+        <input
+          type="text"
+          id="task-input"
+          name="taskText"
+          placeholder="Add a new task…"
+          maxlength="500"
+          autocomplete="off"
+          aria-describedby="task-error"
+        />
+        <button type="submit" id="task-add-btn" aria-label="Add task">Add</button>
+      </form>
+
+      <p class="error-msg" id="task-error" role="alert" aria-live="assertive"></p>
+
+      <ul id="task-list" aria-label="Task list" aria-live="polite">
+        <!-- Tasks are rendered here by TaskModule -->
+      </ul>
+    </section>
+
+    <!-- ========================
+         LINKS CARD — Quick Links Manager
+         ======================== -->
+    <section id="links-card" class="card" aria-labelledby="links-heading">
+      <h2 id="links-heading">Quick Links</h2>
+
+      <form id="links-form" aria-label="Add a quick link">
+        <label for="link-name-input" class="sr-only">Website name</label>
+        <input
+          type="text"
+          id="link-name-input"
+          name="linkName"
+          placeholder="Website name"
+          autocomplete="off"
+          aria-describedby="links-error"
+        />
+
+        <label for="link-url-input" class="sr-only">Website URL</label>
+        <input
+          type="text"
+          id="link-url-input"
+          name="linkUrl"
+          placeholder="https://example.com"
+          autocomplete="off"
+          aria-describedby="links-error"
+        />
+
+        <button type="submit" id="link-add-btn" aria-label="Add quick link">Add Link</button>
+      </form>
+
+      <p class="error-msg" id="links-error" role="alert" aria-live="assertive"></p>
+
+      <ul id="links-list" aria-label="Quick links list" aria-live="polite">
+        <!-- Quick links are rendered here by LinksModule -->
+      </ul>
+    </section>
+
+  </main>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
